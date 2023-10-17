@@ -1,0 +1,7 @@
+Downloading logs of multi-target app operation with ID ad309a7f-6bff-11ee-9ef3-eeee0a8cdd14 in org APJEXTABAPORG / space dev as jacky.liu02@sap.com...
+OK
+Saving logs to /home/user/projects/expressprice/mta-op-ad309a7f-6bff-11ee-9ef3-eeee0a8cdd14...
+  OPERATION.log
+  expressprice-srv.log
+  expressprice-db-deployer.log
+OK
