@@ -21,20 +21,21 @@ class CatalogService extends cds.ApplicationService {init(){
     // let {basePrice,scalePrice } = await SELECT  `basePrice,scalePrice` .from  `ExpressPrice` .where `tag='${tag}'`;
 
      let {basePrice,scalePrice } = await SELECT `basePrice,scalePrice` .from  (ExpressPrice,tag);
-    let expressCost = 0;
+    
+     let expressCost = 0;
     
     if(Number(grossWeight)  < 1){
       expressCost = Number(basePrice);
     }else{
       expressCost =  Number(basePrice) + ( Number(grossWeight) - 1) *  Number(scalePrice);
     }
-    console.log(expressCost);
-    let expressCostStr = toString(expressCost);
+    let expressCostStr = String(expressCost);
     const dnExpress = {outboundDelivery:outboundDelivery,originProvince:originProvince,targetProvince:targetProvince,basePrice: basePrice,scalePrice:scalePrice,grossWeight:grossWeight,expressCost:expressCost };
     await INSERT (dnExpress) .into (DNExpress);
     await COMMIT;
     // await INSERT (DNExpress,outboundDelivery) .with ({ outboundDelivery: outboundDelivery,originProvince:originProvince,targetProvince:targetProvince,basePrice:basePrice,scalePrice:scalePrice,grossWeight:grossWeight,expressCost:expressCost});
-   return { expressCostStr };
+    console.log(expressCostStr);
+    return { expressCostStr };
   });
   this.on ('updateExpress', async req => {
     const {outboundDelivery,cpCode,logisticCode, logisticTrace} = req.data; 
