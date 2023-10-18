@@ -4,5 +4,5 @@ service CatalogService @(requires: 'authenticated-user') {
     entity   ExpressPrice as projection on my.ExpressPrice;
     entity  DNExpress as projection on my.DNExpress;
     action  updateExpress ( outboundDelivery: DNExpress:outboundDelivery,cpCode: DNExpress:cpCode,logisticCode: DNExpress:logisticCode,logisticTrace: DNExpress:logisticTrace  ) returns { logisticCode: String };
-    action  insertExpress ( outboundDelivery: DNExpress:outboundDelivery, originProvince: DNExpress: originProvince,targetProvince: DNExpress:targetProvince,grossWeight: DNExpress:grossWeight  ) returns {  expressCost: Decimal };
+    action  insertExpress ( outboundDelivery: DNExpress:outboundDelivery, originProvince: DNExpress: originProvince,targetProvince: DNExpress:targetProvince,grossWeight: DNExpress:grossWeight  ) returns {  expressCost: String };
 }

@@ -29,11 +29,12 @@ class CatalogService extends cds.ApplicationService {init(){
       expressCost =  Number(basePrice) + ( Number(grossWeight) - 1) *  Number(scalePrice);
     }
     console.log(expressCost);
+    let expressCostStr = toString(expressCost);
     const dnExpress = {outboundDelivery:outboundDelivery,originProvince:originProvince,targetProvince:targetProvince,basePrice: basePrice,scalePrice:scalePrice,grossWeight:grossWeight,expressCost:expressCost };
     await INSERT (dnExpress) .into (DNExpress);
     await COMMIT;
     // await INSERT (DNExpress,outboundDelivery) .with ({ outboundDelivery: outboundDelivery,originProvince:originProvince,targetProvince:targetProvince,basePrice:basePrice,scalePrice:scalePrice,grossWeight:grossWeight,expressCost:expressCost});
-   return { expressCost };
+   return { expressCostStr };
   });
   this.on ('updateExpress', async req => {
     const {outboundDelivery,cpCode,logisticCode, logisticTrace} = req.data; 
