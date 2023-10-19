@@ -30,7 +30,7 @@ class CatalogService extends cds.ApplicationService {init(){
       expressCost =  Number(basePrice) + ( Number(grossWeight) - 1) *  Number(scalePrice);
     }
     let expressCostStr = String(expressCost);
-    const dnExpress = {outboundDelivery:outboundDelivery,originProvince:originProvince,targetProvince:targetProvince,basePrice: basePrice,scalePrice:scalePrice,grossWeight:grossWeight,expressCost:expressCost };
+    const dnExpress = {outboundDelivery:outboundDelivery,originProvince:originProvince,targetProvince:targetProvince,basePrice: basePrice,scalePrice:scalePrice,grossWeight: Number(grossWeight),expressCost:expressCost };
     await INSERT (dnExpress) .into (DNExpress);
     await COMMIT;
     // await INSERT (DNExpress,outboundDelivery) .with ({ outboundDelivery: outboundDelivery,originProvince:originProvince,targetProvince:targetProvince,basePrice:basePrice,scalePrice:scalePrice,grossWeight:grossWeight,expressCost:expressCost});
